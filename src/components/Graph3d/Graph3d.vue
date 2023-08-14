@@ -2,17 +2,12 @@
 import Plotly from 'plotly.js-dist-min'
 import { rows } from './data'
 
-function unpack(rows, key) {
-  return rows.map(function(row) { return row[key]; });
-}
 
-const z_data=[ ]
+// NOTE: works only with array of arrays ??? (x, y axes are array indexes and z axis it's their value)
+// NOTE: adaptive update under props changing => solution Plotly.react + observable on props
 
-for(let i=0; i<24; i++) {
-  z_data.push(unpack(rows,i));
-}
+const z_data = rows
 
-console.log('rows', rows)
 console.log('z_data', z_data)
 
 const data = [{
@@ -43,7 +38,7 @@ const layout = {
 
 // To render it after wrapper rendering
 setTimeout(() => {
-    Plotly.newPlot('graph-root', data, layout);
+  Plotly.react('graph-root', data, layout);
 })
 
 </script>
