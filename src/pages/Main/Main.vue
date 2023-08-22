@@ -44,6 +44,8 @@ const onUpdate = () => {
             <RibbonPlot
                 :data="data"
                 :title="title"
+                :width="1000"
+                :height="700"
             />
 
             
